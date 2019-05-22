@@ -5,13 +5,17 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const UserModel = requireOption(objectrepository, 'UserModel');
+
     return function (req, res, next) {
-        res.locals.user = {
-            _id: 'user01',
-            nev: 'Elek',
-            sex: 'Male',
-            admin: 'no'
-        };
-        return next();
+
+        UserModel.findOne({ "id": Number(req.params.id) }, (err, user) => {
+            if (err || !user) {
+                return next(err);
+            }
+
+            res.locals.user = user;
+            return next();
+        });
     };
 };

@@ -9,8 +9,14 @@ const getUsersMW = require('../middleware/user/getUsersMW');
 const getUserMW = require('../middleware/user/getUserMW');
 const saveUserMW = require('../middleware/user/saveUserMW');
 
-module.exports = function (app) {
-    const objRepo = {};
+const UserModel = require('../models/user');
+const TaskModel = require('../models/task');
+
+module.exports = function(app) {
+    const objRepo = {
+        UserModel: UserModel,
+        TaskModel: TaskModel
+    };
 
     app.use('/users',
         getUsersMW(objRepo),
@@ -27,7 +33,7 @@ module.exports = function (app) {
         saveUserMW(objRepo),
         renderMW(objRepo, 'signup'));
 
-    app.get('/user_task/:userid',
+    app.use('/user_task/:userid',
         authMW(objRepo),
         getUserMW(objRepo),
         getTasksMW(objRepo),
