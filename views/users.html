@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Users</title>
+
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
+	<link href="css/bootstrap-grid.css" rel="stylesheet">
+	<link href="css/bootstrap-reboot.css" rel="stylesheet">
+</head>
+<body>
+
+<!--start: MENU -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="#">TaskManager</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="signup.html">Sign up <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="profil.html">Profil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="tasks.html">Tasks <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="users.html">Users <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	</div>
+</nav>
+<!--end: MENU -->
+<!-- start: content -->
+<div class="container text-center" style="margin-top: 60px">
+	<div class="row">
+		<div class="col-md-push-6 col-md-12 col-xs-12">
+			<h2>Task list</h2>
+			<table class="table table-stripped">
+				<thead>
+				<tr>
+					<th>User name</th>
+					<th>Sex</th>
+					<th>Admin</th>
+					<th>Operations</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Lorem user</td>
+					<td>male</td>
+					<td>no</td>
+					<td class="text-right">
+						<a href="user_tasks.html" class="btn btn-sm btn-primary">Tasks</a>
+						<a href="profil.html" class="btn btn-sm btn-primary">Edit</a>
+						<a href="#" class="btn btn-sm btn-danger">Delete</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Ipsum user</td>
+					<td>female</td>
+					<td>yes</td>
+					<td class="text-right">
+						<a href="user_tasks.html" class="btn btn-sm btn-primary">Tasks</a>
+						<a href="profil.html" class="btn btn-sm btn-primary">Edit</a>
+						<a href="#" class="btn btn-sm btn-danger">Delete</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!-- end: content -->
+
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
