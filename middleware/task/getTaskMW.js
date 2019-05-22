@@ -7,6 +7,14 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        next();
+        res.locals.task = {
+            _id: 'task01',
+            name: 'Football',
+            desc:'egy egy remek leiras',
+            priority: 'high',
+            category: 'sport',
+            time :'2h'
+        };
+        return next();
     };
 };

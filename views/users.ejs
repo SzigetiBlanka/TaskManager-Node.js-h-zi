@@ -21,26 +21,24 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>Lorem user</td>
-					<td>male</td>
-					<td>no</td>
-					<td class="text-right">
-						<a href="user_tasks.ejs" class="btn btn-sm btn-primary">Tasks</a>
-						<a href="profil.ejs" class="btn btn-sm btn-primary">Edit</a>
-						<a href="#" class="btn btn-sm btn-danger">Delete</a>
-					</td>
-				</tr>
-				<tr>
-					<td>Ipsum user</td>
-					<td>female</td>
-					<td>yes</td>
-					<td class="text-right">
-						<a href="user_tasks.ejs" class="btn btn-sm btn-primary">Tasks</a>
-						<a href="profil.ejs" class="btn btn-sm btn-primary">Edit</a>
-						<a href="#" class="btn btn-sm btn-danger">Delete</a>
-					</td>
-				</tr>
+                <% users.forEach(function(egyUser){ %>
+                    <tr>
+                        <td>
+                            <%= egyUser.name %>
+                        </td>
+                        <td>
+                            <%= egyUser.sex %>
+                        </td>
+                        <td>
+                            <%= egyUser.admin %>
+                        </td>
+                        <td class="text-right">
+                            <a href="user_task/<%= egyUser._id %>" class="btn btn-sm btn-primary">Tasks</a>
+                            <a href="profil" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
 				</tbody>
 			</table>
 		</div>

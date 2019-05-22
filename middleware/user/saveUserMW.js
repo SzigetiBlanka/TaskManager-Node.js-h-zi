@@ -7,6 +7,14 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        next();
+        if ((typeof req.body.name === 'undefined') ||
+            (typeof req.body.sex === 'undefined') ||
+            (typeof req.body.admin === 'undefined')
+        ){
+            return next();
+        }
+
+        // TODO: update item, save to db, or create new item
+        return res.redirect('/task/' + res.locals.user._id);
     };
 };

@@ -6,6 +6,10 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        next();
+        if (typeof res.locals.task === 'undefined') {
+            return next();
+        }
+        // TODO: do the delete from DB
+        return res.redirect('/task/' + res.locals.user._id);
     };
 };

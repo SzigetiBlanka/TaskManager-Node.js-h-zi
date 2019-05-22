@@ -12,31 +12,33 @@ const saveUserMW = require('../middleware/user/saveUserMW');
 module.exports = function (app) {
     const objRepo = {};
 
-    app.use('/',
-        getUsersMW(objRepo),
-        checkPassMW(objRepo),
-        renderMW(objRepo, 'index'));
-
-    app.get('/user',
-        authMW(objRepo),
+    app.use('/users',
         getUsersMW(objRepo),
         renderMW(objRepo, 'users'));
-    app.use('/user/new',
+    app.use('/tasks',
+        getTasksMW(objRepo),
+        renderMW(objRepo, 'tasks'));
+    app.get('/profil/:userid',
+        authMW(objRepo),
+        getUserMW(objRepo),
+        renderMW(objRepo, 'profil'));
+    app.use('/signup',
         authMW(objRepo),
         saveUserMW(objRepo),
         renderMW(objRepo, 'signup'));
 
-    app.get('/task/:userid',
+    app.get('/user_task/:userid',
         authMW(objRepo),
         getUserMW(objRepo),
         getTasksMW(objRepo),
         renderMW(objRepo, 'user_tasks'));
-    app.use('/task/:userid/new',
+    app.use('/task_edit/:taskid',
         authMW(objRepo),
+        getTaskMW(objRepo),
         getUserMW(objRepo),
         saveTaskMW(objRepo),
         renderMW(objRepo, 'task_edit'));
-    app.use('/task/:userid/edit/:taskid',
+    app.use('user_task/edit/:taskid',
         authMW(objRepo),
         getUserMW(objRepo),
         getTaskMW(objRepo),
@@ -48,4 +50,8 @@ module.exports = function (app) {
         getTaskMW(objRepo),
         delTaskMW(objRepo),
         renderMW(objRepo, 'task_edit'));
+    app.use('/',
+        getUsersMW(objRepo),
+        checkPassMW(objRepo),
+        renderMW(objRepo, 'index'));
 };

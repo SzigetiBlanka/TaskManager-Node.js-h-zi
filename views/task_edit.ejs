@@ -9,30 +9,32 @@
 <div class="container" style="margin-top: 60px ">
 	<div class="row">
 		<div class="col-md-push-12 col-md-10 col-xs-12 text-left">
-			<h1 class="h3 mb-3 font-weight-normal">Edit task</h1>
+            <h2>Task
+                <% if (typeof task === 'undefined') { %>
+                    create
+                <% }else{ %>
+                    edit
+                <% } %>
+            </h2>
+            <small>User: <%= user.name %></small>
 		</div>
 		<div class="col-md-push-3 col-md-6 col-xs-12">
 			<form>
 				<div class="form-group">
 					<label for="taskname">Task Name</label>
-					<input type="text" class="form-control" id="taskname">
+					<input type="text" class="form-control" id="taskname" value="<%= (typeof task === 'undefined') ? '' : task.name %>">
 					<label for="taskdesc">Description</label>
-					<input type="text" class="form-control" id="taskdesc">
+					<input type="text" class="form-control" id="taskdesc" value="<%= (typeof task === 'undefined') ? '' : task.desc %>">
 					<label for="taskpriority">Priority</label>
-					<select id="taskpriority" class="form-control">
-						<option>Low</option>
-						<option>Medium</option>
-						<option>High</option>
-						<option>neverdoitplease</option>
-					</select>
+                    <input type="text" class="form-control" id="taskpriority" value="<%= (typeof task === 'undefined') ? '' : task.priority %>">
 					<label for="taskcat">Category</label>
-					<input type="text" class="form-control" id="taskcat">
+					<input type="text" class="form-control" id="taskcat" value="<%= (typeof task === 'undefined') ? '' : task.category %>">
 					<label for="tasktime">Time</label>
-					<input type="text" class="form-control" id="tasktime">
+					<input type="text" class="form-control" id="tasktime" value="<%= (typeof task === 'undefined') ? '' : task.time %>">
 				</div>
 				<div class="form-group">
-					<a href="tasks.ejs" class="btn btn-primary">Save</a>
-					<a href="tasks.ejs" class="btn btn-default btn-danger">Cancel</a>
+					<a href="tasks" class="btn btn-primary">Save</a>
+					<a href="tasks" class="btn btn-default btn-danger">Cancel</a>
 				</div>
 			</form>
 		</div>

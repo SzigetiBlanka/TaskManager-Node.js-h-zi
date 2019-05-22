@@ -1,6 +1,9 @@
 var express = require('express');
 const app = express();
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
 const bodyParser = require('body-parser');
 app.set('views engine', 'ejs');
 app.use(bodyParser.urlencoded());
