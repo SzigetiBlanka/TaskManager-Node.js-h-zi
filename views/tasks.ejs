@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header') -%>
+<body>
+
+<!--start: MENU -->
+<%- include('menu') -%>
+<!--end: MENU -->
+<!-- start: content -->
+<div class="container text-center" style="margin-top: 60px">
+	<div class="row">
+		<div class="col-md-push-6 col-md-12 col-xs-12">
+			<h2>Task list</h2>
+			<table class="table table-stripped">
+				<thead>
+				<tr>
+					<th>Task name</th>
+					<th>Priority</th>
+					<th>Category</th>
+					<th>Time</th>
+					<th>Operations</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Lorem task</td>
+					<td>Low</td>
+					<td>sport</td>
+					<td>2h 30s</td>
+					<td class="text-right">
+						<a href="#" class="btn btn-sm btn-success">Take On</a>
+						<a href="task_edit.ejs" class="btn btn-sm btn-primary">Edit</a>
+						<a href="#" class="btn btn-sm btn-danger">Delete</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Ipsum task</td>
+					<td>High</td>
+					<td>game</td>
+					<td>4h 30s</td>
+					<td class="text-right">
+						<a href="#" class="btn btn-sm btn-success">Take On</a>
+						<a href="task_edit.ejs" class="btn btn-sm btn-primary">Edit</a>
+						<a href="#" class="btn btn-sm btn-danger">Delete</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div class="text-center">
+				<a href="task_edit.ejs" class="btn btn-lg btn-primary">New task</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: content -->
+
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
