@@ -9,7 +9,11 @@ module.exports = function (objectrepository) {
         if (typeof res.locals.task === 'undefined') {
             return next();
         }
-        // TODO: do the delete from DB
-        return res.redirect('/task/' + res.locals.user._id);
+        res.locals.task.remove(err => {
+            if (err) {
+                return next(err);
+            }
+        return res.redirect('/task/${res.locals.user._id}');
+        });
     };
 };

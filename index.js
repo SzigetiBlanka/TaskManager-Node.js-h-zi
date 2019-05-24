@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session')
 const app = express();
 
 app.engine('html', require('ejs').renderFile);
@@ -11,6 +12,8 @@ app.use(bodyParser.json());
 
 
 app.use(express.static('views'));
+
+app.use(session({secret: 'secret'}));
 
 // Load routing
 require('./route/index')(app);

@@ -6,6 +6,8 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const UserModel = requireOption(objectrepository, 'UserModel');
+
     return function (req, res, next) {
         if ((typeof req.body.name === 'undefined') ||
             (typeof req.body.sex === 'undefined') ||
@@ -14,7 +16,28 @@ module.exports = function (objectrepository) {
             return next();
         }
 
-        // TODO: update item, save to db, or create new item
-        return res.redirect('/task/' + res.locals.user._id);
+        if (typeof res.locals.user === 'undefined') {
+            res.locals.user = new UserModel();
+        }
+
+        /*res.locals.user.name = req.body.name;
+        res.locals.user.sex = req.body.sex;
+        res.locals.user.admin = req.body.admin;*/
+        res.locals.user.name = "Timi";
+        res.locals.user.sex = "female";
+        res.locals.user.admin = "no";
+        res.locals.user.id="456";
+
+        res.locals.user.save(err => {
+            if (err) {
+                return next(err);
+            }
+
+            return res.redirect('/users');
+        });
+
+
+
+
     };
 };

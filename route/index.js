@@ -25,33 +25,30 @@ module.exports = function(app) {
         getTasksMW(objRepo),
         renderMW(objRepo, 'tasks'));
     app.get('/profil/:userid',
-        authMW(objRepo),
         getUserMW(objRepo),
+        saveUserMW(objRepo),
         renderMW(objRepo, 'profil'));
     app.use('/signup',
-        authMW(objRepo),
         saveUserMW(objRepo),
         renderMW(objRepo, 'signup'));
 
-    app.use('/user_task/:userid',
-        authMW(objRepo),
+    app.get('/user_task/:userid',
         getUserMW(objRepo),
         getTasksMW(objRepo),
         renderMW(objRepo, 'user_tasks'));
-    app.use('/task_edit/:taskid',
-        authMW(objRepo),
+    app.get('/task_edit/:taskid',
         getTaskMW(objRepo),
-        getUserMW(objRepo),
         saveTaskMW(objRepo),
         renderMW(objRepo, 'task_edit'));
-    app.use('user_task/edit/:taskid',
-        authMW(objRepo),
+    app.use('/task_edit',
+        saveTaskMW(objRepo),
+        renderMW(objRepo, 'task_edit'));
+    app.get('user_task/edit/:taskid',
         getUserMW(objRepo),
         getTaskMW(objRepo),
         saveTaskMW(objRepo),
         renderMW(objRepo, 'task_edit'));
     app.get('/task/:userid/del/:taskid',
-        authMW(objRepo),
         getUserMW(objRepo),
         getTaskMW(objRepo),
         delTaskMW(objRepo),

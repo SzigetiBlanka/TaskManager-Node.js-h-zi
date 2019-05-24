@@ -6,15 +6,21 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const TaskModel = requireOption(objectrepository, 'TaskModel');
     return function (req, res, next) {
-        res.locals.task = {
-            _id: 'task01',
-            name: 'Football',
-            desc:'egy egy remek leiras',
-            priority: 'high',
-            category: 'sport',
-            time :'2h'
-        };
-        return next();
+
+        TaskModel.findOne(
+            {
+                "id":Number.isNaN(parseInt(req.params.id, 10))
+            },
+            (err, task) => {
+                if (err || !task) {
+                    return next(err);
+                }
+
+                res.locals.task = task;
+                return next();
+            }
+        );
     };
 };

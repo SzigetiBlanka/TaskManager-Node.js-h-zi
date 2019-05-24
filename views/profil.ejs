@@ -10,26 +10,23 @@
 <div class="container" style="margin-top: 60px ">
 	<div class="row">
 		<div class="col-md-push-12 col-md-10 col-xs-12 text-left">
-			<h1 class="h3 mb-3 font-weight-normal">Profil</h1>
+            <h2>Profil -
+                <% if (typeof user === 'undefined') { %>
+                    create
+                <% }else{ %>
+                    edit
+                <% } %>
+            </h2>
 		</div>
 		<div class="col-md-push-3 col-md-6 col-xs-12">
-			<form>
+			<form  method="POST">
 				<div class="form-group">
 					<label for="username">Username</label>
-					<input type="text" class="form-control" id="username" disabled>
-					<div class="checkbox mb-10">
-						<label>
-							Admin <input type="checkbox" id="admin" disabled>
-						</label>
-					</div>
-					<div class="checkbox mb-10">
-						<label>
-							Female <input type="checkbox" id="female" disabled>
-						</label>
-						<label>
-							Male <input type="checkbox" id="male" disabled>
-						</label>
-					</div>
+					<input type="text" class="form-control" id="username"  value="<%= (typeof user === 'undefined') ? '' : user.name %>">
+                    <label for="sex">Sex</label>
+                    <input type="text" class="form-control" id="sex"  value="<%= (typeof user === 'undefined') ? '' : user.sex %>">
+                    <label for="admin">Admin</label>
+                    <input type="text" class="form-control" id="admin"  value="<%= (typeof user === 'undefined') ? '' : user.admin %>">
 				</div>
 				<div class="form-group">
 					<a href="tasks" class="btn btn-primary">Save</a>

@@ -5,24 +5,16 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const TaskModel = requireOption(objectrepository, 'TaskModel');
+
     return function (req, res, next) {
-        res.locals.tasks = [
-            {
-            _id: 'task01',
-            name: 'Football',
-            desc:'egy egy remek leiras',
-            priority: 'high',
-            category: 'sport',
-            time :'2h'
-        },
-            {
-                _id: 'task02',
-                name: 'Write homework',
-                desc:'egy egy remek leiras2',
-                priority: 'low',
-                category: 'school',
-                time :'1h'
-            }];
-        return next();
+        TaskModel.find({}, (err, tasks) => {
+            if (err) {
+                return next(err);
+            }
+
+            res.locals.tasks = tasks;
+            return next();
+        });
     };
 };

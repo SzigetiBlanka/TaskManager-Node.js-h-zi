@@ -10,8 +10,8 @@ module.exports = function (objectrepository) {
         }
 
         if (req.body.password === 'nodejs') {
-            // TODO: create new session
-            return res.redirect('/user');
+            req.session.belepve = true;
+            return req.session.save(err => res.redirect('/user'));
         }
 
         res.locals.error = 'Hibás jelszó!';

@@ -9,7 +9,7 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
 
-        UserModel.findOne({ "id": Number(req.params.id) }, (err, user) => {
+        UserModel.findOne({ "id":Number.isNaN(parseInt(req.params.id, 10))}, (err, user) => {
             if (err || !user) {
                 return next(err);
             }
